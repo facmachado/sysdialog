@@ -1,0 +1,56 @@
+#!/usr/bin/env xdotool
+
+#
+# Start test
+#
+exec /bin/bash --norc --noprofile
+sleep 5
+
+#
+# Call app.sh
+#
+key --delay 120 b a s h space a p p period s h
+key --delay 480 KP_Enter
+sleep 2
+
+#
+# NO user and NO password
+#
+key --delay 480 KP_Enter
+sleep 2
+key --delay 480 KP_Enter
+sleep 2
+
+#
+# NO password
+#
+key --delay 120 1 2 3 4 5 6
+key --delay 480 KP_Enter
+sleep 2
+key --delay 480 KP_Enter
+sleep 2
+
+#
+# NO user
+#
+key --delay 480 Down
+key --delay 120 1 2 3 4 5 6
+key --delay 480 KP_Enter
+sleep 2
+key --delay 480 KP_Enter
+sleep 2
+
+#
+# User and password OK
+#
+key --delay 120 1 2 3 4 5 6
+key --delay 480 Down
+key --delay 120 1 2 3 4 5 6
+key --delay 480 KP_Enter
+sleep 2
+
+#
+# Finish test
+#
+key --delay 120 e x i t
+key --delay 480 KP_Enter

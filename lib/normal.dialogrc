@@ -1,0 +1,10 @@
+# lib/normal.dialogrc
+
+use_shadow = ON
+use_colors = ON
+screen_color = (WHITE,BLUE,OFF)
+title_color = (BLUE,WHITE,ON)
+button_active_color = (WHITE,BLUE,ON)
+button_key_inactive_color = (RED,WHITE,OFF)
+button_label_active_color = (YELLOW,BLUE,ON)
+tag_key_selected_color = (RED,BLUE,ON)
