@@ -4,53 +4,53 @@
 # Start test
 #
 exec /bin/bash --norc --noprofile
-sleep 5
+sleep 1.5
 
 #
 # Call app.sh
 #
-key --delay 120 b a s h space a p p period s h
-key --delay 480 KP_Enter
-sleep 2
+key --delay 150 b a s h space a p p period s h
+key --delay 450 KP_Enter
+sleep 1.5
 
 #
 # NO user and NO password
 #
-key --delay 480 KP_Enter
-sleep 2
-key --delay 480 KP_Enter
-sleep 2
+key --delay 450 KP_Enter
+sleep 1.5
+key --delay 450 KP_Enter
+sleep 1.5
 
 #
 # NO password
 #
-key --delay 120 1 2 3 4 5 6
-key --delay 480 KP_Enter
-sleep 2
-key --delay 480 KP_Enter
-sleep 2
+key --delay 150 1 2 3 4 5 6
+key --delay 450 KP_Enter
+sleep 1.5
+key --delay 450 KP_Enter
+sleep 1.5
 
 #
 # NO user
 #
-key --delay 480 Down
-key --delay 120 1 2 3 4 5 6
-key --delay 480 KP_Enter
-sleep 2
-key --delay 480 KP_Enter
-sleep 2
+key --delay 450 Down
+key --delay 150 1 2 3 4 5 6
+key --delay 450 KP_Enter
+sleep 1.5
+key --delay 450 KP_Enter
+sleep 1.5
 
 #
 # User and password OK
 #
-key --delay 120 1 2 3 4 5 6
-key --delay 480 Down
-key --delay 120 1 2 3 4 5 6
-key --delay 480 KP_Enter
-sleep 2
+key --delay 150 1 2 3 4 5 6
+key --delay 450 Down
+key --delay 150 1 2 3 4 5 6
+key --delay 450 KP_Enter
+sleep 1.5
 
 #
 # Finish test
 #
-key --delay 120 e x i t
-key --delay 480 KP_Enter
+key --delay 150 e x i t
+key --delay 450 KP_Enter
