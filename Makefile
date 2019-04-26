@@ -7,4 +7,4 @@ run:
 . @bash app.sh
 
 runtest:
-. @xdotool test/test.xdo
+. @xdotool test/001-login.test.xdo
