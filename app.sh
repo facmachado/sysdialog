@@ -10,6 +10,7 @@ test ! -x "$(which curl)"                               \
 # readonly config="$(dirname $0)/$name.conf"
 # readonly pidfile="/var/run/$name.pid"
 
+source lib/api.sh
 source lib/window.sh
 
 APPTITLE='Sistema de aprendizado v.0.1'
