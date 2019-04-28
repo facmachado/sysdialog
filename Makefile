@@ -1,10 +1,13 @@
 .RECIPEPREFIX=.
 
-debug:
-. @bash -x app.sh
+cleanlog:
+. @>log/logfile.txt
 
 run:
 . @bash app.sh
 
 runtest:
-. @xdotool test/001-login.test.xdo
+. @xvfb-run xterm -e bash test/runtest.sh
+
+runtestview:
+. @xterm -e bash test/runtest.sh

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #
-# CRUD - Create
+# Create record (CRUD)
 # @param {string} table
 # @param {string:json} params
 # @returns {string:json}
@@ -12,7 +12,7 @@ function api_post() {
 }
 
 #
-# CRUD - Read
+# Read record(s) (CRUD)
 # @param {string} table
 # @param {string:json} params
 # @returns {string:json}
@@ -23,7 +23,7 @@ function api_get() {
 }
 
 #
-# CRUD - Update
+# Update record (CRUD)
 # @param {string} table
 # @param {number} id
 # @param {string:json} params
@@ -35,7 +35,7 @@ function api_put() {
 }
 
 #
-# CRUD - Delete
+# Delete record (CRUD)
 # @param {string} table
 # @param {number} id
 # @returns {string:json}
