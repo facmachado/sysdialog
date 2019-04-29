@@ -5,10 +5,8 @@ test ! -x "$(which xdotool)"                          \
   && echo 'This program requires xdotool and xterm.'  \
   && exit 1
 
-logfile="log/logfile.txt"
-
 function printlog() {
-  echo "[$(date +'%Y-%m-%d %H-%M-%S')] $1" >>$logfile
+  echo "[$(date +'%Y-%m-%d %H-%M-%S')] $1" >>log/logfile.txt
 }
 
 #
@@ -24,8 +22,10 @@ xdotool mousemove 100 100
 for test in test/????-*.xdo; do
   xdotool              \
     mousemove 120 120  \
-    mousemove 100 100
+    mousemove 100 100  \
+    exec /bin/bash --norc --noprofile
   xdotool $test
+  xdotool key --delay 50 e x i t KP_Enter
   printlog "--> $(basename $test)"
 done
 printlog "User interface test finished"

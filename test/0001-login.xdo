@@ -1,12 +1,6 @@
 #!/usr/bin/env xdotool
 
 #
-# Start test
-#
-exec /bin/bash --norc --noprofile
-sleep 0.1
-
-#
 # Call app.sh
 #
 key --delay 50 b a s h space a p p period s h KP_Enter
@@ -42,8 +36,3 @@ sleep 0.1
 key --delay 50 1 2 3 4 5 6 Down
 key --delay 50 1 2 3 4 5 6 KP_Enter
 sleep 0.1
-
-#
-# Finish test
-#
-key --delay 50 e x i t KP_Enter
