@@ -73,3 +73,24 @@ function win_read_code() {
     --title       '\Z0──\Zr Entre com seus dados \Zn'  \
     --passwordbox '\n Passe o cartão na leitora' 7 50
 }
+
+#
+# Menu genérico
+# @param {string} backtitle
+# @param {string} title
+# @param {string} message
+# @param {array}  items
+# @returns {number}
+#
+function win_menu() {
+  arr=(${@:4})
+  m=$((${#arr[@]} / 2))
+  h=$((m + 10))
+  w=$(($(tput cols) - 60))
+  dialog --colors --stdout            \
+    --backtitle    "$1"               \
+    --title        "\Z0──\Zr $2 \Zn"  \
+    --cancel-label 'Sair'             \
+    --menu         "\n$3\n "          \
+    $h $w $m "${arr[@]}"
+}

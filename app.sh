@@ -39,6 +39,7 @@ function do_login() {
 }
 
 do_login
+
 # win_logon "$APPTITLE"
 # win_read_code "$APPTITLE"
 # win_msgbox error                                  \
@@ -46,6 +47,15 @@ do_login
 #   'Falha na autenticação'                         \
 #   "$APPTITLE"
 # win_change_passwd "$APPTITLE"
+# win_menu                      \
+#   "$APPTITLE"                 \
+#   'Menu principal'            \
+#   'Escolha a opção desejada'  \
+#   item1 'desc1'               \
+#   item2 'desc2'               \
+#   item3 'desc3'               \
+#   item4 'desc4'               \
+#   item5 'desc5'               \
+#   item6 'desc6'
 
-# (cd Dropbox && bash app-modified.sh)
 exit 0
