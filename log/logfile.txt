@@ -1,5 +1,0 @@
-[2019-05-02 21-18-24] Automated test suite started
-[2019-05-02 21-18-24] User interface test started
-[2019-05-02 21-18-29] --> 0001-login.xdo
-[2019-05-02 21-18-29] User interface test finished
-[2019-05-02 21-18-29] Automated test suite finished
