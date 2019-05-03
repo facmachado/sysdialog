@@ -84,7 +84,7 @@ function win_read_code() {
 #
 function win_menu() {
   items=$((($# - 3) / 2))
-  height=$((itens + 10))
+  height=$((items + 10))
   dialog --colors --stdout            \
     --backtitle    "$1"               \
     --title        "\Z0──\Zr $2 \Zn"  \
