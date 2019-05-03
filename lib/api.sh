@@ -6,9 +6,12 @@
 # @param {string:json} params
 # @returns {string:json}
 #
-function api_post() {
-  # curl -X POST "/post/$table"
-  echo -n
+function api_create() {
+  curl                                         \
+    --request POST                             \
+    --header 'Content-Type: application/json'  \
+    --data "$2"                                \
+    "/create/$1"
 }
 
 #
@@ -17,30 +20,38 @@ function api_post() {
 # @param {string:json} params
 # @returns {string:json}
 #
-function api_get() {
-  # curl -X POST "/get/$table"
-  echo -n
+function api_read() {
+  curl                                         \
+    --request POST                             \
+    --header 'Content-Type: application/json'  \
+    --data "$2"                                \
+    "/read/$1"
 }
 
 #
 # Update record (CRUD)
 # @param {string} table
-# @param {number} id
 # @param {string:json} params
 # @returns {string:json}
 #
-function api_put() {
-  # curl -X POST "/put/$table/$id"
-  echo -n
+function api_update() {
+  curl                                         \
+    --request POST                             \
+    --header 'Content-Type: application/json'  \
+    --data "$2"                                \
+    "/update/$1"
 }
 
 #
 # Delete record (CRUD)
 # @param {string} table
-# @param {number} id
+# @param {string:json} params
 # @returns {string:json}
 #
 function api_delete() {
-  # curl -X POST "/delete/$table/$id"
-  echo -n
+  curl                                         \
+    --request POST                             \
+    --header 'Content-Type: application/json'  \
+    --data "$2"                                \
+    "/delete/$1"
 }
