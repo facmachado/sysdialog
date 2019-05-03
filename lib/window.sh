@@ -83,14 +83,12 @@ function win_read_code() {
 # @returns {number}
 #
 function win_menu() {
-  arr=(${@:4})
-  m=$((${#arr[@]} / 2))
-  h=$((m + 10))
-  
+  itens=$((($# - 3) / 2))
+  height=$((itens + 10))
   dialog --colors --stdout            \
     --backtitle    "$1"               \
     --title        "\Z0──\Zr $2 \Zn"  \
     --cancel-label 'Sair'             \
     --menu         "\n$3\n "          \
-    $h 70 $m "${arr[@]}"
+    $height 70 $itens "${@:4}"
 }
