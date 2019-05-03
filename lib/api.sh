@@ -7,11 +7,9 @@
 # @returns {string:json}
 #
 function api_create() {
-  curl                                         \
-    --request POST                             \
+  curl --insecure --request POST               \
     --header 'Content-Type: application/json'  \
-    --data "$2"                                \
-    "/create/$1"
+    --data "$2" "$APIURL/create/$1"
 }
 
 #
@@ -21,11 +19,9 @@ function api_create() {
 # @returns {string:json}
 #
 function api_read() {
-  curl                                         \
-    --request POST                             \
+  curl --insecure --request POST               \
     --header 'Content-Type: application/json'  \
-    --data "$2"                                \
-    "/read/$1"
+    --data "$2" "$APIURL/read/$1"
 }
 
 #
@@ -35,11 +31,9 @@ function api_read() {
 # @returns {string:json}
 #
 function api_update() {
-  curl                                         \
-    --request POST                             \
+  curl --insecure --request POST               \
     --header 'Content-Type: application/json'  \
-    --data "$2"                                \
-    "/update/$1"
+    --data "$2" "$APIURL/update/$1"
 }
 
 #
@@ -49,9 +43,7 @@ function api_update() {
 # @returns {string:json}
 #
 function api_delete() {
-  curl                                         \
-    --request POST                             \
+  curl --insecure --request POST               \
     --header 'Content-Type: application/json'  \
-    --data "$2"                                \
-    "/delete/$1"
+    --data "$2" "$APIURL/delete/$1"
 }

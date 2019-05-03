@@ -10,11 +10,11 @@ function win_change_passwd() {
     --backtitle    "$1"                              \
     --title        '\Z0──\Zr Alterar senha \Zn'      \
     --passwordform '\nEntre com seus dados' 13 32 0  \
-      'Senha atual' 1 2 '' 1 14 12 0                 \
-      ''            2 2 '' 2 14  0 0                 \
-      'Nova senha'  3 2 '' 3 14 12 0                 \
-      ''            4 2 '' 4 14  0 0                 \
-      'Confirmar'   5 2 '' 5 14 12 0
+    'Senha atual' 1 2 '' 1 14 12 0                   \
+    ''            2 2 '' 2 14  0 0                   \
+    'Nova senha'  3 2 '' 3 14 12 0                   \
+    ''            4 2 '' 4 14  0 0                   \
+    'Confirmar'   5 2 '' 5 14 12 0
 }
 
 #
@@ -28,14 +28,14 @@ function win_logon() {
     --backtitle "$1"                                  \
     --title     '\Z0──\Zr Entre com seus dados \Zn'   \
     --mixedform '\n Use ENTER (Ctrl+C: Sair)' 9 30 0  \
-      'Usuário' 1 3 '' 1 11 12 0 0                    \
-      ''        2 3 '' 2 11  0 0 2                    \
-      'Senha'   3 3 '' 3 11 12 0 1
+    'Usuário' 1 3 '' 1 11 12 0 0                      \
+    ''        2 3 '' 2 11  0 0 2                      \
+    'Senha'   3 3 '' 3 11 12 0 1
 }
 
 #
 # Caixa de mensagens genérica
-# @param {string} type (error|normal|question)
+# @param {string} type (null|error|question)
 # @param {string} message
 # @param {string} title
 # @param {string} backtitle
@@ -90,5 +90,5 @@ function win_menu() {
     --title        "\Z0──\Zr $2 \Zn"  \
     --cancel-label 'Sair'             \
     --menu         "\n$3\n "          \
-    $height 70 $items "${@:4}"
+    $height 60 $items "${@:4}"
 }

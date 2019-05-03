@@ -10,11 +10,10 @@ test ! -x "$(which curl)"                               \
 # readonly config="$(dirname $0)/$name.conf"
 # readonly pidfile="/var/run/$name.pid"
 
+source lib/app.conf
 source lib/api.sh
 source lib/window.sh
 
-APPTITLE='Sistema de aprendizado v.0.1'
-DIALOGRC="$(readlink -f lib/normal.dialogrc)"
 export DIALOGRC
 
 function do_login() {
@@ -47,15 +46,19 @@ do_login
 #   'Falha na autenticação'                         \
 #   "$APPTITLE"
 # win_change_passwd "$APPTITLE"
-# win_menu                      \
-#   "$APPTITLE"                 \
-#   'Menu principal'            \
-#   'Escolha a opção desejada'  \
-#   item1 'desc1'               \
-#   item2 'desc2'               \
-#   item3 'desc3'               \
-#   item4 'desc4'               \
-#   item5 'desc5'               \
-#   item6 'desc6'
+# win_menu                                             \
+#   "$APPTITLE"                                        \
+#   'Menu principal'                                   \
+#   'Escolha a opção desejada'                         \
+#   1 'Item correspondente à opção 1 (abre o menu 1)'  \
+#   2 'Item correspondente à opção 2 (abre o menu 2)'  \
+#   3 'Item correspondente à opção 3 (abre o menu 3)'  \
+#   4 'Item correspondente à opção 4 (abre o menu 4)'  \
+#   5 'Item correspondente à opção 5 (abre o menu 5)'  \
+#   6 'Item correspondente à opção 6 (abre o menu 6)'  \
+#   7 'Item correspondente à opção 7 (abre o menu 7)'  \
+#   8 'Item correspondente à opção 8 (abre o menu 8)'  \
+#   9 'Item correspondente à opção 9 (abre o menu 9)'  \
+#   0 'Item correspondente à opção 0 (abre o menu 0)'
 
 exit 0
