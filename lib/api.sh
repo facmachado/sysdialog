@@ -9,7 +9,7 @@
 function api_create() {
   curl --insecure --request POST               \
     --header 'Content-Type: application/json'  \
-    --data "$2" "$APIURL/create/$1"
+    --data "$2" "http://$HOST:$PORT/create/$1"
 }
 
 #
@@ -21,7 +21,7 @@ function api_create() {
 function api_read() {
   curl --insecure --request POST               \
     --header 'Content-Type: application/json'  \
-    --data "$2" "$APIURL/read/$1"
+    --data "$2" "http://$HOST:$PORT/read/$1"
 }
 
 #
@@ -33,7 +33,7 @@ function api_read() {
 function api_update() {
   curl --insecure --request POST               \
     --header 'Content-Type: application/json'  \
-    --data "$2" "$APIURL/update/$1"
+    --data "$2" "http://$HOST:$PORT/update/$1"
 }
 
 #
@@ -45,5 +45,5 @@ function api_update() {
 function api_delete() {
   curl --insecure --request POST               \
     --header 'Content-Type: application/json'  \
-    --data "$2" "$APIURL/delete/$1"
+    --data "$2" "http://$HOST:$PORT/delete/$1"
 }
