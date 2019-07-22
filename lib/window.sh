@@ -7,7 +7,7 @@
 #
 function win_change_passwd() {
   dialog --colors --stdout --insecure                \
-    --backtitle    "$1"                              \
+    --backtitle    "$APPTITLE"                       \
     --title        '\Z0──\Zr Alterar senha \Zn'      \
     --passwordform '\nEntre com seus dados' 13 32 0  \
     'Senha atual' 1 2 '' 1 14 12 0                   \
@@ -25,7 +25,7 @@ function win_change_passwd() {
 function win_logon() {
   dialog --colors --stdout --insecure                 \
     --no-ok --no-cancel                               \
-    --backtitle "$1"                                  \
+    --backtitle "$APPTITLE"                           \
     --title     '\Z0──\Zr Entre com seus dados \Zn'   \
     --mixedform '\n Use ENTER (Ctrl+C: Sair)' 9 30 0  \
     'Usuário' 1 3 '' 1 11 12 0 0                      \
@@ -54,7 +54,7 @@ function win_msgbox() {
   esac
   DIALOGRC=$dialogrc dialog        \
     --colors --stdout              \
-    --backtitle "$4"               \
+    --backtitle "$APPTITLE"        \
     --title     "\Z0──\Zr $3 \Zn"  \
     --$type     "\n$2\n " 0 0
   code=$?
@@ -69,7 +69,7 @@ function win_msgbox() {
 function win_read_code() {
   dialog --colors --stdout --insecure                  \
     --no-ok --no-cancel                                \
-    --backtitle   "$1"                                 \
+    --backtitle   "$APPTITLE"                          \
     --title       '\Z0──\Zr Entre com seus dados \Zn'  \
     --passwordbox '\n Passe o cartão na leitora' 7 50
 }
@@ -83,12 +83,13 @@ function win_read_code() {
 # @returns {number}
 #
 function win_menu() {
-  items=$((($# - 3) / 2))
+  items=$((($# - 2) / 2))
   height=$((items + 10))
   dialog --colors --stdout            \
-    --backtitle    "$1"               \
-    --title        "\Z0──\Zr $2 \Zn"  \
+    --backtitle    "$APPTITLE"        \
+    --title        "\Z0──\Zr $1 \Zn"  \
+    --ok-label     'OK'               \
     --cancel-label 'Sair'             \
-    --menu         "\n$3\n "          \
-    $height 60 $items "${@:4}"
+    --menu         "\n$2\n "          \
+    $height 60 $items "${@:3}"
 }

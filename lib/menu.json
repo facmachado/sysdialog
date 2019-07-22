@@ -1,0 +1,15 @@
+{
+  "menus": [
+    {
+      "name": "main_menu",
+      "items": [
+        "Cadastros",
+        "Movimentos",
+        "Consultas",
+        "Relatórios",
+        "Configurações",
+        "Alterar senha"
+      ]
+    }
+  ]
+}
