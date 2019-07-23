@@ -2,11 +2,12 @@
 
 #
 # Caixa de alteração de senha de usuário
-# @param {string} backtitle
 # @returns {number}
 #
 function win_change_passwd() {
   dialog --colors --stdout --insecure                \
+    --ok-label     'OK'                              \
+    --cancel-label 'Voltar'                          \
     --backtitle    "$APPTITLE"                       \
     --title        '\Z0──\Zr Alterar senha \Zn'      \
     --passwordform '\nEntre com seus dados' 13 32 0  \
@@ -19,7 +20,6 @@ function win_change_passwd() {
 
 #
 # Caixa de logon de usuário
-# @param {string} backtitle
 # @returns {number}
 #
 function win_logon() {
@@ -36,9 +36,8 @@ function win_logon() {
 #
 # Caixa de mensagens genérica
 # @param {string} type (null|error|question)
-# @param {string} message
 # @param {string} title
-# @param {string} backtitle
+# @param {string} message
 # @returns {number}
 #
 function win_msgbox() {
@@ -55,15 +54,14 @@ function win_msgbox() {
   DIALOGRC=$dialogrc dialog        \
     --colors --stdout              \
     --backtitle "$APPTITLE"        \
-    --title     "\Z0──\Zr $3 \Zn"  \
-    --$type     "\n$2\n " 0 0
+    --title     "\Z0──\Zr $2 \Zn"  \
+    --$type     "\n$3\n " 0 0
   code=$?
   test $1 == 'question' && echo $code
 }
 
 #
 # Caixa de leitura de código de barras ou QR
-# @param {string} backtitle
 # @returns {number}
 #
 function win_read_code() {
@@ -76,7 +74,6 @@ function win_read_code() {
 
 #
 # Menu genérico
-# @param {string} backtitle
 # @param {string} title
 # @param {string} message
 # @param {array}  items
@@ -86,10 +83,10 @@ function win_menu() {
   items=$((($# - 2) / 2))
   height=$((items + 10))
   dialog --colors --stdout            \
-    --backtitle    "$APPTITLE"        \
-    --title        "\Z0──\Zr $1 \Zn"  \
     --ok-label     'OK'               \
     --cancel-label 'Sair'             \
+    --backtitle    "$APPTITLE"        \
+    --title        "\Z0──\Zr $1 \Zn"  \
     --menu         "\n$2\n "          \
     $height 60 $items "${@:3}"
 }

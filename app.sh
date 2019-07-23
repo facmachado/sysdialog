@@ -22,6 +22,7 @@ function do_change_passwd() {
 }
 
 function do_login() {
+  trap 'clear && exit 0' INT
   declare -a values
   while :; do
     while IFS=$'\n' read -r line; do
@@ -35,16 +36,25 @@ function do_login() {
       do_main_menu
       break
     else
-      win_msgbox error                  \
-        'Usuário e senha obrigatórios'  \
-        'Falha na autenticação'
+      win_msgbox error 'Falha na autenticação'          \
+        'Verifique suas credenciais e tente novamente'
       values=()
     fi
   done
 }
 
+function do_logout() {
+  option=$(win_msgbox question 'Encerrar?' 'Deseja mesmo sair do sistema?')
+  if (($option == 0)); then
+    clear
+    exit 0
+  else
+    do_main_menu
+  fi
+}
+
 function do_main_menu() {
-  trap 'do_main_menu' INT
+  trap 'do_logout' INT
   declare -p list
   readarray -t lines < <(jq -c '.menus[0].items[]' lib/menu.json | tr -d \")
   list=()
@@ -58,6 +68,7 @@ function do_main_menu() {
   case $option in
     1|2|3|4|5) do_main_menu ;;
     6) do_change_passwd ;;
+    *) do_logout ;;
   esac
 }
 
