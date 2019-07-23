@@ -22,7 +22,7 @@ function do_change_passwd() {
 }
 
 function do_login() {
-  trap 'clear && exit 0' INT
+  trap 'clear && exit' INT
   declare -a values
   while :; do
     while IFS=$'\n' read -r line; do
@@ -46,8 +46,7 @@ function do_login() {
 function do_logout() {
   option=$(win_msgbox question 'Encerrar?' 'Deseja mesmo sair do sistema?')
   if (($option == 0)); then
-    clear
-    exit 0
+    clear && exit 0
   else
     do_main_menu
   fi

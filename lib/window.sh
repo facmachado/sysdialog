@@ -5,9 +5,7 @@
 # @returns {number}
 #
 function win_change_passwd() {
-  dialog --colors --stdout --insecure                \
-    --ok-label     'OK'                              \
-    --cancel-label 'Voltar'                          \
+  dialog --colors --stdout --insecure --clear        \
     --backtitle    "$APPTITLE"                       \
     --title        '\Z0──\Zr Alterar senha \Zn'      \
     --passwordform '\nEntre com seus dados' 13 32 0  \
@@ -23,7 +21,7 @@ function win_change_passwd() {
 # @returns {number}
 #
 function win_logon() {
-  dialog --colors --stdout --insecure                 \
+  dialog --colors --stdout --insecure --clear         \
     --no-ok --no-cancel                               \
     --backtitle "$APPTITLE"                           \
     --title     '\Z0──\Zr Entre com seus dados \Zn'   \
@@ -44,15 +42,11 @@ function win_msgbox() {
   dialogrc='lib/normal.dialogrc'
   type='msgbox'
   case $1 in
-    error)
-      dialogrc='lib/error.dialogrc'
-    ;;
-    question)
-      type='yesno'
-    ;;
+    error) dialogrc='lib/error.dialogrc' ;;
+    question) type='yesno' ;;
   esac
   DIALOGRC=$dialogrc dialog        \
-    --colors --stdout              \
+    --colors --stdout --clear      \
     --backtitle "$APPTITLE"        \
     --title     "\Z0──\Zr $2 \Zn"  \
     --$type     "\n$3\n " 0 0
@@ -65,7 +59,7 @@ function win_msgbox() {
 # @returns {number}
 #
 function win_read_code() {
-  dialog --colors --stdout --insecure                  \
+  dialog --colors --stdout --insecure --clear          \
     --no-ok --no-cancel                                \
     --backtitle   "$APPTITLE"                          \
     --title       '\Z0──\Zr Entre com seus dados \Zn'  \
@@ -82,9 +76,7 @@ function win_read_code() {
 function win_menu() {
   items=$((($# - 2) / 2))
   height=$((items + 10))
-  dialog --colors --stdout            \
-    --ok-label     'OK'               \
-    --cancel-label 'Sair'             \
+  dialog --colors --stdout --clear    \
     --backtitle    "$APPTITLE"        \
     --title        "\Z0──\Zr $1 \Zn"  \
     --menu         "\n$2\n "          \
