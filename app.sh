@@ -36,8 +36,8 @@ function do_login() {
       do_main_menu
       break
     else
-      win_msgbox error 'Falha na autenticação'          \
-        'Verifique suas credenciais e tente novamente'
+      win_msgbox error 'Falha na autenticação'           \
+        'Verifique suas credenciais\ne tente novamente'
       values=()
     fi
   done
