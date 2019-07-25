@@ -6,14 +6,14 @@
 #
 function win_change_passwd() {
   dialog --colors --stdout --insecure --clear          \
+    --ok-label     'OK'                                \
+    --cancel-label 'Sair'                              \
     --backtitle    "$APPTITLE"                         \
     --title        '\Z7\Zr──\Zn\Zb Alterar senha \Zn'  \
-    --passwordform '\nEntre com seus dados' 13 32 0    \
-    'Senha atual' 1 2 '' 1 14 12 0                     \
-    ''            2 2 '' 2 14  0 0                     \
-    'Nova senha'  3 2 '' 3 14 12 0                     \
-    ''            4 2 '' 4 14  0 0                     \
-    'Confirmar'   5 2 '' 5 14 12 0
+    --passwordform '\nEntre com seus dados' 13 35 0    \
+    'Senha atual' 1 3 '' 1 16 12 0                     \
+    'Nova senha'  3 3 '' 3 16 12 0                     \
+    'Confirmar'   5 3 '' 5 16 12 0
 }
 
 #
@@ -21,14 +21,33 @@ function win_change_passwd() {
 # @returns {number}
 #
 function win_logon() {
-  dialog --colors --stdout --insecure --clear              \
-    --no-ok --no-cancel                                    \
-    --backtitle "$APPTITLE"                                \
-    --title     '\Z7\Zr──\Zn\Zb Entre com seus dados \Zn'  \
-    --mixedform '\n Use ENTER (Ctrl+C: Sair)' 9 30 0       \
-    'Usuário' 1 3 '' 1 11 12 0 0                           \
-    ''        2 3 '' 2 11  0 0 2                           \
-    'Senha'   3 3 '' 3 11 12 0 1
+  dialog --colors --stdout --insecure --clear  \
+    --ok-label     'OK'                        \
+    --cancel-label 'Sair'                      \
+    --backtitle "$APPTITLE"                    \
+    --title     '\Z7\Zr──\Zn\Zb Iniciar \Zn'   \
+    --mixedform '' 9 31 0                      \
+    'Usuário' 1 3 '' 1 12 12 0 0               \
+    'Senha'   3 3 '' 3 12 12 0 1
+}
+
+#
+# Menu genérico
+# @param {string} title
+# @param {string} message
+# @param {array}  items
+# @returns {number}
+#
+function win_menu() {
+  items=$((($# - 2) / 2))
+  height=$((items + 10))
+  dialog --colors --stdout --clear          \
+    --ok-label     'OK'                     \
+    --cancel-label 'Sair'                   \
+    --backtitle    "$APPTITLE"              \
+    --title        "\Z7\Zr──\Zn\Zb $1 \Zn"  \
+    --menu         "\n$2\n "                \
+    $height 60 $items "${@:3}"
 }
 
 #
@@ -47,9 +66,10 @@ function win_msgbox() {
   esac
   DIALOGRC=$dialogrc dialog              \
     --colors --stdout --clear            \
+    --ok-label  'OK'                     \
     --backtitle "$APPTITLE"              \
     --title     "\Z7\Zr──\Zn\Zb $2 \Zn"  \
-    --$type     "\n$3\n " -1 -1
+    --$type     "\n$3\n " 0 0
   code=$?
   test $1 == 'question' && echo $code
 }
@@ -59,26 +79,9 @@ function win_msgbox() {
 # @returns {number}
 #
 function win_read_code() {
-  dialog --colors --stdout --insecure --clear                \
-    --no-ok --no-cancel                                      \
-    --backtitle   "$APPTITLE"                                \
-    --title       '\Z7\Zr──\Zn\Zb Entre com seus dados \Zn'  \
+  dialog --colors --stdout --insecure --clear   \
+    --no-ok --no-cancel                         \
+    --backtitle   "$APPTITLE"                   \
+    --title       '\Z7\Zr──\Zn\Zb Iniciar \Zn'  \
     --passwordbox '\n Passe o cartão na leitora' 7 50
-}
-
-#
-# Menu genérico
-# @param {string} title
-# @param {string} message
-# @param {array}  items
-# @returns {number}
-#
-function win_menu() {
-  items=$((($# - 2) / 2))
-  height=$((items + 10))
-  dialog --colors --stdout --clear          \
-    --backtitle    "$APPTITLE"              \
-    --title        "\Z7\Zr──\Zn\Zb $1 \Zn"  \
-    --menu         "\n$2\n "                \
-    $height 60 $items "${@:3}"
 }

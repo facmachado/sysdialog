@@ -16,7 +16,14 @@ source lib/window.sh
 
 export DIALOGRC
 
+function do_about() {
+  trap 'do_main_menu' INT
+  win_msgbox null 'Sobre' "$APPTITLE\ngit: $(head -c 8 .git/refs/heads/master)"
+  do_main_menu
+}
+
 function do_change_passwd() {
+  trap 'do_main_menu' INT
   win_change_passwd
   do_main_menu
 }
@@ -36,15 +43,16 @@ function do_login() {
       do_main_menu
       break
     else
-      win_msgbox error 'Falha na autenticação'           \
-        'Verifique suas credenciais\ne tente novamente'
+      win_msgbox error 'Falha na autenticação'          \
+        'Verifique suas credenciais e tente novamente'
       values=()
     fi
   done
 }
 
 function do_logout() {
-  option=$(win_msgbox question 'Encerrar?' 'Deseja mesmo sair do sistema?')
+  trap 'do_main_menu' INT
+  option=$(win_msgbox question 'Sair' 'Deseja mesmo finalizar a sessão?')
   if (($option == 0)); then
     clear && exit 0
   else
@@ -67,6 +75,7 @@ function do_main_menu() {
   case $option in
     1|2|3|4|5) do_main_menu ;;
     6) do_change_passwd ;;
+    7) do_about ;;
     *) do_logout ;;
   esac
 }
