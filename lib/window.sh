@@ -41,12 +41,12 @@ function win_logon() {
 function win_menu() {
   items=$((($# - 2) / 2))
   height=$((items + 10))
-  dialog --colors --stdout --clear          \
-    --ok-label     'OK'                     \
-    --cancel-label 'Sair'                   \
-    --backtitle    "$APPTITLE"              \
-    --title        "\Z7\Zr──\Zn\Zb $1 \Zn"  \
-    --menu         "\n$2\n "                \
+  dialog --colors --stdout --clear               \
+    --ok-label     'OK'                          \
+    --cancel-label 'Sair'                        \
+    --backtitle    "$APPTITLE"                   \
+    --title        "\\Z7\\Zr──\\Zn\\Zb $1 \\Zn"  \
+    --menu         "\\n$2\\n "                   \
     $height 60 $items "${@:3}"
 }
 
@@ -64,14 +64,14 @@ function win_msgbox() {
     error) dialogrc='lib/error.dialogrc' ;;
     question) type='yesno' ;;
   esac
-  DIALOGRC=$dialogrc dialog              \
-    --colors --stdout --clear            \
-    --ok-label  'OK'                     \
-    --backtitle "$APPTITLE"              \
-    --title     "\Z7\Zr──\Zn\Zb $2 \Zn"  \
-    --$type     "\n$3\n " 0 0
+  DIALOGRC=$dialogrc dialog                   \
+    --colors --stdout --clear                 \
+    --ok-label  'OK'                          \
+    --backtitle "$APPTITLE"                   \
+    --title     "\\Z7\\Zr──\\Zn\\Zb $2 \\Zn"  \
+    --$type     "\\n$3\\n " 0 0
   code=$?
-  test $1 == 'question' && echo $code
+  test "$1" == 'question' && echo $code
 }
 
 #
