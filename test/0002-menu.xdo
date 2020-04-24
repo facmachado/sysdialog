@@ -1,0 +1,7 @@
+#!/usr/bin/env xdotool
+
+#
+#
+#
+key --delay 50 Down Down Down Up Up Up KP_Enter
+sleep 0.1

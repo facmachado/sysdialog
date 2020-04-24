@@ -33,9 +33,9 @@ function win_logon() {
 
 #
 # Menu genérico
-# @param {string} title
-# @param {string} message
-# @param {array}  items
+# @param   {string} title
+# @param   {string} message
+# @param   {array}  items
 # @returns {number}
 #
 function win_menu() {
@@ -52,9 +52,9 @@ function win_menu() {
 
 #
 # Caixa de mensagens genérica
-# @param {string} type (null|error|question)
-# @param {string} title
-# @param {string} message
+# @param   {string} type (null|error|question)
+# @param   {string} title
+# @param   {string} message
 # @returns {number}
 #
 function win_msgbox() {
